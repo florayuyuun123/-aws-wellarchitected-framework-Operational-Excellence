@@ -1,0 +1,17 @@
+# ─────────────────────────────────────────
+# Copy this file to terraform.tfvars and fill in your values
+# terraform.tfvars is gitignored — never commit it
+# ─────────────────────────────────────────
+
+# AWS Configuration
+aws_region  = "us-east-1"
+environment = "dev"
+
+# Slack Configuration
+# Get workspace_id: AWS Console → Chatbot → after OAuth
+# Get channel_id:   Right-click Slack channel → Copy link → last segment of URL
+slack_workspace_id = "TXXXXXXXXXX"
+slack_channel_id   = "CXXXXXXXXXX"
+
+# EC2 Support — set to true when you have EC2 instances
+enable_ec2_documents = false

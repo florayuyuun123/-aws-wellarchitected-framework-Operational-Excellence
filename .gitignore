@@ -1,0 +1,19 @@
+# Terraform state files — contain sensitive resource details
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# Sensitive variable values — never commit these
+*.tfvars
+*.tfvars.json
+
+# Allow the example file — safe to commit, contains no real values
+!*.tfvars.example
+
+# variables.tf no longer contains sensitive values but keep gitignored as extra safety
+# Remove this line if you want variables.tf tracked by git
+environments/dev/variables.tf
+
+# Lambda build artifacts
+modules/lambda/chatops_lambda.zip

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatOps Operations Dashboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #2d3748;
+    }
+
+    header h1 { font-size: 1.5rem; font-weight: 600; color: #fff; }
+    header p  { font-size: 0.85rem; color: #718096; margin-top: 0.25rem; }
+
+    .badge {
+      background: #1a202c;
+      border: 1px solid #2d3748;
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.75rem;
+      color: #68d391;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .badge::before {
+      content: "";
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #68d391;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: #1a202c;
+      border: 1px solid #2d3748;
+      border-radius: 12px;
+      padding: 1.25rem;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #a0aec0;
+    }
+
+    .status-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    .ok       { background: #68d391; }
+    .alarm    { background: #fc8181; }
+    .unknown  { background: #f6ad55; }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .metric-label {
+      font-size: 0.78rem;
+      color: #718096;
+      margin-top: 0.4rem;
+    }
+
+    .component-list { list-style: none; }
+
+    .component-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #2d3748;
+      font-size: 0.85rem;
+    }
+
+    .component-list li:last-child { border-bottom: none; }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .tag-ok      { background: #1c4532; color: #68d391; }
+    .tag-active  { background: #1a365d; color: #63b3ed; }
+    .tag-warning { background: #744210; color: #f6ad55; }
+
+    .commands-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .commands-table th {
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      color: #718096;
+      font-weight: 600;
+      border-bottom: 1px solid #2d3748;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .commands-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid #1a202c;
+      color: #e2e8f0;
+    }
+
+    .commands-table tr:last-child td { border-bottom: none; }
+
+    code {
+      background: #2d3748;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: #90cdf4;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #a0aec0;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #2d3748;
+      font-size: 0.75rem;
+      color: #4a5568;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>ChatOps Operations Dashboard</h1>
+      <p>AWS Well-Architected — Operational Excellence Pillar</p>
+    </div>
+    <div class="badge">Live</div>
+  </header>
+
+  <!-- Status Cards -->
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Lambda Function</span>
+        <span class="status-dot ok"></span>
+      </div>
+      <div class="metric-value" id="lambda-errors">—</div>
+      <div class="metric-label">Errors (last 5 min)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Lambda Duration</span>
+        <span class="status-dot ok"></span>
+      </div>
+      <div class="metric-value" id="lambda-duration">—</div>
+      <div class="metric-label">Max duration ms (last 5 min)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Lambda Throttles</span>
+        <span class="status-dot ok"></span>
+      </div>
+      <div class="metric-value" id="lambda-throttles">—</div>
+      <div class="metric-label">Throttles (last 5 min)</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Active Alarms</span>
+        <span class="status-dot ok"></span>
+      </div>
+      <div class="metric-value" id="active-alarms">—</div>
+      <div class="metric-label">CloudWatch alarms in ALARM state</div>
+    </div>
+
+  </div>
+
+  <!-- Component Status -->
+  <div class="card" style="margin-bottom: 1.25rem;">
+    <p class="section-title">Component Status</p>
+    <ul class="component-list">
+      <li><span>AWS Chatbot → Slack</span>         <span class="tag tag-ok">Connected</span></li>
+      <li><span>EventBridge Rules</span>            <span class="tag tag-active">3 Active</span></li>
+      <li><span>SSM Automation Documents</span>     <span class="tag tag-active">4 Ready</span></li>
+      <li><span>SNS Alerts Topic</span>             <span class="tag tag-ok">Subscribed</span></li>
+      <li><span>CloudWatch Alarms</span>            <span class="tag tag-active">5 Configured</span></li>
+      <li><span>IAM Roles</span>                    <span class="tag tag-ok">3 Active</span></li>
+    </ul>
+  </div>
+
+  <!-- Slack Commands Reference -->
+  <div class="card">
+    <p class="section-title">Slack Command Reference</p>
+    <table class="commands-table">
+      <thead>
+        <tr>
+          <th>Slack Command (@Amazon Q ...)</th>
+          <th>Parameters</th>
+          <th>SSM Document</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>@Amazon Q lambda list-functions --region us-east-1</code></td>
+          <td>none</td>
+          <td><code>chatops-list-lambdas</code></td>
+          <td>List all Lambda functions and state</td>
+        </tr>
+        <tr>
+          <td><code>@Amazon Q ssm start-automation-execution --document-name chatops-check-lambda-health --parameters FunctionName=&lt;value&gt; --region us-east-1</code></td>
+          <td><code>FunctionName</code></td>
+          <td><code>chatops-check-lambda-health</code></td>
+          <td>Get config and state of a Lambda function</td>
+        </tr>
+        <tr>
+          <td><code>@Amazon Q cloudwatch describe-alarms --state-value ALARM --region us-east-1</code></td>
+          <td>none</td>
+          <td><code>chatops-list-active-alarms</code></td>
+          <td>List all alarms currently in ALARM state</td>
+        </tr>
+        <tr>
+          <td><code>@Amazon Q sns list-subscriptions-by-topic --topic-arn &lt;value&gt; --region us-east-1</code></td>
+          <td><code>TopicArn</code></td>
+          <td><code>chatops-list-sns-subscriptions</code></td>
+          <td>List SNS topic subscriptions</td>
+        </tr>
+        <tr style="opacity:0.45">
+          <td><code>@Amazon Q ssm start-automation-execution --document-name chatops-describe-instances --region us-east-1</code></td>
+          <td>none</td>
+          <td><code>chatops-describe-instances</code></td>
+          <td>EC2 only — enable_ec2_documents = true</td>
+        </tr>
+        <tr style="opacity:0.45">
+          <td><code>@Amazon Q ssm start-automation-execution --document-name chatops-stop-instance --parameters InstanceId=&lt;value&gt; --region us-east-1</code></td>
+          <td><code>InstanceId</code></td>
+          <td><code>chatops-stop-instance</code></td>
+          <td>EC2 only — enable_ec2_documents = true</td>
+        </tr>
+        <tr style="opacity:0.45">
+          <td><code>@Amazon Q ssm start-automation-execution --document-name chatops-restart-instance --parameters InstanceId=&lt;value&gt; --region us-east-1</code></td>
+          <td><code>InstanceId</code></td>
+          <td><code>chatops-restart-instance</code></td>
+          <td>EC2 only — enable_ec2_documents = true</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    ChatOps Bot &mdash; AWS Well-Architected Operational Excellence &mdash;
+    Hosted on S3 + CloudFront &mdash; No custom domain required
+  </footer>
+
+</body>
+</html>
