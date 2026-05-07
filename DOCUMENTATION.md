@@ -18,7 +18,7 @@ by building a ChatOps bot that integrates AWS with Slack for real-time operation
 
 *End-to-end alerting and remediation flow aligned with the AWS Well-Architected Operational Excellence pillar.*
 
-### Directory flow
+### Directory setup
 
 ```
 operational-excellence/

@@ -18,6 +18,6 @@ environments/dev/variables.tf
 # Lambda build artifacts
 modules/lambda/chatops_lambda.zip
 
-# Removed this following files and added the diagram directly in the documentation file
+# Added the diagram directly in the documentation file
 .drawio
 .png
