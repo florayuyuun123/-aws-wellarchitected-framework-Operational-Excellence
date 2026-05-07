@@ -1,0 +1,129 @@
+<mxfile host="app.diagrams.net" modified="2023-10-27T00:00:00.000Z" agent="Mozilla/5.0" version="22.0.8" type="device">
+  <diagram name="ChatOps Architecture" id="chatops-arch">
+    <mxGraphModel dx="1200" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Nodes -->
+        <mxCell id="slack" value="Slack Workspace" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg;fontStyle=1;fontSize=14;fontColor=#232F3E;" vertex="1" parent="1">
+          <mxGeometry x="800" y="100" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="chatbot" value="AWS Chatbot&#10;(ChatOps Hub)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#26A69A;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.chatbot;" vertex="1" parent="1">
+          <mxGeometry x="450" y="100" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="sns" value="Amazon SNS&#10;(Alert Router)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#E91E63;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="eventbridge" value="Amazon EventBridge&#10;(Event Bus)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#FFCA28;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.eventbridge;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cloudwatch" value="Amazon CloudWatch&#10;(Alarms &amp; Metrics)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#29B6F6;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch;" vertex="1" parent="1">
+          <mxGeometry x="100" y="500" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lambda" value="AWS Lambda&#10;(Execution Engine)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#FF7043;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="1">
+          <mxGeometry x="450" y="300" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ssm" value="Systems Manager&#10;(Runbooks)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#8BC34A;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.systems_manager;" vertex="1" parent="1">
+          <mxGeometry x="450" y="500" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="ec2" value="Amazon EC2&#10;(Target Resource)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#FFA726;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2;" vertex="1" parent="1">
+          <mxGeometry x="800" y="500" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="iam" value="AWS IAM&#10;(Security / Roles)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#EF5350;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.shield;" vertex="1" parent="1">
+          <mxGeometry x="450" y="700" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="s3" value="Amazon S3&#10;(Dashboard Hosting)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#66BB6A;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="1">
+          <mxGeometry x="100" y="900" width="78" height="78" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="cloudfront" value="Amazon CloudFront&#10;(CDN)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#AB47BC;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;" vertex="1" parent="1">
+          <mxGeometry x="450" y="900" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <mxCell id="browser" value="User Browser" style="outlineConnect=0;fontColor=#232F3E;fillColor=#232F3E;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.client;" vertex="1" parent="1">
+          <mxGeometry x="800" y="900" width="78" height="78" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="edge_slack_chatbot" value="ChatOps Commands&#10;&amp; Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;startArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="slack" target="chatbot">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_cw_eb" value="Alarm State Changes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cloudwatch" target="eventbridge">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_eb_sns" value="Routes Alarm &amp; SSM status events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="eventbridge" target="sns">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- NEW: Rule 2 path (CloudWatch ALARM -> EventBridge -> Lambda) -->
+        <mxCell id="edge_eb_lambda" value="ALARM state -> invoke Lambda" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="eventbridge" target="lambda">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- NEW: Rule 3 path (SSM execution status -> EventBridge -> SNS) -->
+        <mxCell id="edge_ssm_eb" value="Automation status events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ssm" target="eventbridge">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_sns_chatbot" value="Triggers Notification" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sns" target="chatbot">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_chatbot_lambda" value="Executes Request" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="chatbot" target="lambda">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_lambda_ssm" value="Starts Runbook" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="lambda" target="ssm">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_ssm_ec2" value="Restarts/Stops Instance" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ssm" target="ec2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_chatbot_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#232F3E;strokeColor=#888888;strokeWidth=1;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="chatbot" target="iam">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="139" />
+              <mxPoint x="380" y="739" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="edge_lambda_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#232F3E;strokeColor=#888888;strokeWidth=1;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="lambda" target="iam">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="339" />
+              <mxPoint x="550" y="739" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="edge_ssm_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#232F3E;strokeColor=#888888;strokeWidth=1;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ssm" target="iam">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_s3_cf" value="Serves Origin" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="s3" target="cloudfront">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_cf_browser" value="Displays Dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cloudfront" target="browser">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
