@@ -73,7 +73,7 @@
         </mxCell>
 
         <!-- NEW: Rule 3 path (SSM execution status -> EventBridge -> SNS) -->
-        <mxCell id="edge_ssm_eb" value="SSM execution status events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=0;exitY=0.35;exitDx=0;exitDy=0;entryX=1;entryY=0.35;entryDx=0;entryDy=0;" edge="1" parent="1" source="ssm" target="eventbridge">
+        <mxCell id="edge_ssm_eb" value="SSM execution status events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#00BCD4;strokeColor=#00BCD4;strokeWidth=3;labelBackgroundColor=#ffffff;exitX=0;exitY=0.35;exitDx=0;exitDy=0;entryX=1;entryY=0.35;entryDx=0;entryDy=0;" edge="1" parent="1" source="ssm" target="eventbridge">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="300" y="517" />
@@ -98,7 +98,7 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="edge_chatbot_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#232F3E;strokeColor=#888888;strokeWidth=1;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="chatbot" target="iam">
+        <mxCell id="edge_chatbot_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#FFB300;strokeColor=#FFB300;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="chatbot" target="iam">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="380" y="139" />
@@ -107,7 +107,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="edge_lambda_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#232F3E;strokeColor=#888888;strokeWidth=1;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="lambda" target="iam">
+        <mxCell id="edge_lambda_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#FFB300;strokeColor=#FFB300;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="lambda" target="iam">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="550" y="339" />
@@ -116,7 +116,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="edge_ssm_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#232F3E;strokeColor=#888888;strokeWidth=1;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ssm" target="iam">
+        <mxCell id="edge_ssm_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#FFB300;strokeColor=#FFB300;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ssm" target="iam">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
 
