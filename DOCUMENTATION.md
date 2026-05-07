@@ -1,4 +1,4 @@
-# Operational Excellence Pillar — ChatOps Bot on AWS
+# AWS ChatOps Architecture for Operational Excellence
 ## Real-Time AWS Operations from Slack
 
 ---
@@ -12,25 +12,13 @@ by building a ChatOps bot that integrates AWS with Slack for real-time operation
 
 ---
 
-## Architecture
+## ## Project Structure
 
-```
-Slack Workspace
-     ↑  ↓
-AWS Chatbot  ←──────────────────────────────┐
-     ↑                                       │
-EventBridge  ←──  CloudWatch Alarms          │
-     ↑                                       │
-Lambda Functions  ←──  SSM Documents         │
-     ↑                                       │
-IAM Roles & Policies (secure access control) │
-     ↑                                       │
-Optional Dashboard: S3 + CloudFront ─────────┘
-```
+![AWS ChatOps Architecture for Operational Excellence (Slack, EventBridge, Lambda, SSM)](diagram.png)
 
----
+*End-to-end alerting and remediation flow aligned with the AWS Well-Architected Operational Excellence pillar.*
 
-## Project Structure
+### Directory flow
 
 ```
 operational-excellence/

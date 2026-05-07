@@ -1,10 +1,15 @@
 <mxfile host="app.diagrams.net" modified="2023-10-27T00:00:00.000Z" agent="Mozilla/5.0" version="22.0.8" type="device">
-  <diagram name="ChatOps Architecture" id="chatops-arch">
+  <diagram name="AWS ChatOps Architecture for Operational Excellence (Slack, EventBridge, Lambda, SSM)" id="chatops-arch">
     <mxGraphModel dx="1200" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         
+        <!-- Diagram Title -->
+        <mxCell id="diagram_title" value="AWS ChatOps Architecture for Operational Excellence&#10;(Slack, EventBridge, Lambda, SSM)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#F9FAFB;" vertex="1" parent="1">
+          <mxGeometry x="180" y="10" width="620" height="56" as="geometry" />
+        </mxCell>
+
         <!-- Nodes -->
         <mxCell id="slack" value="Slack Workspace" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/d/d5/Slack_icon_2019.svg;fontStyle=1;fontSize=14;fontColor=#232F3E;" vertex="1" parent="1">
           <mxGeometry x="800" y="100" width="78" height="78" as="geometry" />
@@ -55,7 +60,7 @@
         </mxCell>
 
         <!-- Edges -->
-        <mxCell id="edge_slack_chatbot" value="ChatOps Commands&#10;&amp; Alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;startArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="slack" target="chatbot">
+        <mxCell id="edge_slack_chatbot" value="ChatOps commands&#10;&amp; alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;startArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="slack" target="chatbot">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
 
@@ -63,12 +68,12 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="edge_eb_sns" value="Routes Alarm &amp; SSM status events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="eventbridge" target="sns">
+        <mxCell id="edge_eb_sns" value="Routes alarm &amp; SSM status events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="eventbridge" target="sns">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
 
         <!-- NEW: Rule 2 path (CloudWatch ALARM -> EventBridge -> Lambda) -->
-        <mxCell id="edge_eb_lambda" value="ALARM state -> invoke Lambda" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="eventbridge" target="lambda">
+        <mxCell id="edge_eb_lambda" value="Invokes Lambda on ALARM state" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="eventbridge" target="lambda">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
 
@@ -82,23 +87,23 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="edge_sns_chatbot" value="Triggers Notification" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sns" target="chatbot">
+        <mxCell id="edge_sns_chatbot" value="Sends notifications" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sns" target="chatbot">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="edge_chatbot_lambda" value="Executes Request" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="chatbot" target="lambda">
+        <mxCell id="edge_chatbot_lambda" value="Executes requests" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="chatbot" target="lambda">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="edge_lambda_ssm" value="Starts Runbook" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="lambda" target="ssm">
+        <mxCell id="edge_lambda_ssm" value="Starts runbooks" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="lambda" target="ssm">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="edge_ssm_ec2" value="Restarts/Stops Instance" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ssm" target="ec2">
+        <mxCell id="edge_ssm_ec2" value="Restarts/stops instances" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ssm" target="ec2">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="edge_chatbot_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#FFB300;strokeColor=#FFB300;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="chatbot" target="iam">
+        <mxCell id="edge_chatbot_iam" value="Assumes role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#FFB300;strokeColor=#FFB300;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="chatbot" target="iam">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="380" y="139" />
@@ -107,7 +112,7 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="edge_lambda_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#FFB300;strokeColor=#FFB300;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="lambda" target="iam">
+        <mxCell id="edge_lambda_iam" value="Assumes role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#FFB300;strokeColor=#FFB300;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="lambda" target="iam">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="550" y="339" />
@@ -116,16 +121,21 @@
           </mxGeometry>
         </mxCell>
         
-        <mxCell id="edge_ssm_iam" value="Assumes Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#FFB300;strokeColor=#FFB300;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ssm" target="iam">
+        <mxCell id="edge_ssm_iam" value="Assumes role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#FFB300;strokeColor=#FFB300;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ssm" target="iam">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="edge_s3_cf" value="Serves Origin" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="s3" target="cloudfront">
+        <mxCell id="edge_s3_cf" value="Serves origin" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="s3" target="cloudfront">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
 
-        <mxCell id="edge_cf_browser" value="Displays Dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cloudfront" target="browser">
+        <mxCell id="edge_cf_browser" value="Displays dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cloudfront" target="browser">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend_box" value="Legend&#10;Solid white: primary request/data flow&#10;Dashed cyan: status event flow&#10;Dashed amber: IAM role assumption" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1F2937;strokeColor=#D1D5DB;fontColor=#F9FAFB;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="735" width="320" height="100" as="geometry" />
         </mxCell>
 
       </root>
