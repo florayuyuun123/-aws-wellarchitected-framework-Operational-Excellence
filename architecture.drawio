@@ -18,6 +18,10 @@
         <mxCell id="chatbot" value="AWS Chatbot&#10;(ChatOps Hub)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#26A69A;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.chatbot;" vertex="1" parent="1">
           <mxGeometry x="450" y="100" width="78" height="78" as="geometry" />
         </mxCell>
+
+        <mxCell id="amazonq" value="Amazon Q Developer" style="shape=image;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;image=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgdmlld0JveD0iMCAwIDI1NiAyNTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwQTFGRiIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNkEwMEZGIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOUQwMEZGIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHBvbHlnb24gcG9pbnRzPSIxMjgsMjggMjIzLDgzIDIyMywxOTMgMTI4LDI0OCAzMywxOTMgMzMsODMiIGZpbGw9InVybCgjYmcpIiBzdHJva2U9InVybCgjYmcpIiBzdHJva2Utd2lkdGg9IjI0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiAvPjxwb2x5Z29uIHBvaW50cz0iMTI4LDY4IDE4OSwxMDMgMTg5LDE3MyAxMjgsMjA4IDY3LDE3MyA2NywxMDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMTYiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48bGluZSB4MT0iMTI4IiB5MT0iMTM4IiB4Mj0iMTg5IiB5Mj0iMTczIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjE2Ii8+PHBvbHlnb24gcG9pbnRzPSIxMjgsMTI0IDE0MCwxMzEgMTQwLDE0NSAxMjgsMTUyIDExNiwxNDUgMTE2LDEzMSIgZmlsbD0id2hpdGUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==;" vertex="1" parent="1">
+          <mxGeometry x="625" y="100" width="78" height="78" as="geometry" />
+        </mxCell>
         
         <mxCell id="sns" value="Amazon SNS&#10;(Alert Router)" style="outlineConnect=0;fontColor=#232F3E;fillColor=#E91E63;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=14;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sns;" vertex="1" parent="1">
           <mxGeometry x="100" y="100" width="78" height="78" as="geometry" />
@@ -60,31 +64,33 @@
         </mxCell>
 
         <!-- Edges -->
-        <mxCell id="edge_slack_chatbot" value="ChatOps commands&#10;&amp; alerts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;startArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="slack" target="chatbot">
+        <mxCell id="edge_q_command" value="@Amazon Q&#10;Command" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="slack" target="amazonq">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_q_chatbot" value="Parses &amp; Routes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="amazonq" target="chatbot">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edge_chatbot_slack" value="Alert Notifications" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#E91E63;strokeColor=#E91E63;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="chatbot" target="slack">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="489" y="60" />
+              <mxPoint x="839" y="60" />
+            </Array>
+          </mxGeometry>
         </mxCell>
 
         <mxCell id="edge_cw_eb" value="Alarm State Changes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cloudwatch" target="eventbridge">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="edge_eb_sns" value="Routes alarm &amp; SSM status events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="eventbridge" target="sns">
+        <mxCell id="edge_eb_sns" value="Routes Events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="eventbridge" target="sns">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
-
-        <!-- NEW: Rule 2 path (CloudWatch ALARM -> EventBridge -> Lambda) -->
-        <mxCell id="edge_eb_lambda" value="Invokes Lambda on ALARM state" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="eventbridge" target="lambda">
+        
+        <mxCell id="edge_eb_lambda" value="Auto-Remediation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#FF9900;strokeColor=#FF9900;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="eventbridge" target="lambda">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- NEW: Rule 3 path (SSM execution status -> EventBridge -> SNS) -->
-        <mxCell id="edge_ssm_eb" value="SSM execution status events" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#00BCD4;strokeColor=#00BCD4;strokeWidth=3;labelBackgroundColor=#ffffff;exitX=0;exitY=0.35;exitDx=0;exitDy=0;entryX=1;entryY=0.35;entryDx=0;entryDy=0;" edge="1" parent="1" source="ssm" target="eventbridge">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="300" y="517" />
-              <mxPoint x="300" y="327" />
-            </Array>
-          </mxGeometry>
         </mxCell>
         
         <mxCell id="edge_sns_chatbot" value="Sends notifications" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="sns" target="chatbot">
@@ -99,8 +105,16 @@
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
         
-        <mxCell id="edge_ssm_ec2" value="Restarts/stops instances" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ssm" target="ec2">
+        <mxCell id="edge_ssm_ec2" value="Restarts/Stops Instance" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;html=1;fontColor=#232F3E;strokeColor=#555555;strokeWidth=2;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ssm" target="ec2">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_ssm_eb" value="Execution Status" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#232F3E;strokeColor=#00A1C9;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="ssm" target="eventbridge">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="139" y="539" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         
         <mxCell id="edge_chatbot_iam" value="Assumes role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;endArrow=classic;dashed=1;html=1;fontColor=#FFB300;strokeColor=#FFB300;strokeWidth=2;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="chatbot" target="iam">
